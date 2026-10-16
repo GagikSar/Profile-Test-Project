@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Փքաբլիթներ և սուրճ | Մասնագիտացված Սրճարան</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mardoto:wght@300;400;700&family=Noto+Sans+Armenian:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ընդհանուր ոճեր */
+        :root {
+            --primary-coffee: #4B3621;
+            --secondary-coffee: #6F4E37;
+            --cream: #FDF5E6;
+            --accent-warm: #C08261;
+            --text-dark: #2C1E12;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Armenian', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Նավիգացիա */
+        header {
+            background-color: rgba(253, 245, 230, 0.95);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-coffee);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-coffee);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Գլխավոր մաս (Hero) */
+        #home {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        #home p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background-color: var(--accent-warm);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-coffee);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Մեր մասին */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-coffee);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: var(--accent-warm);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 20px 20px 0 var(--accent-warm);
+        }
+
+        /* Մենյու */
+        #menu {
+            background-color: var(--cream);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-coffee);
+        }
+
+        .price {
+            color: var(--accent-warm);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Կոնտակտներ և Քարտեզ */
+        #contact {
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-box {
+            margin-bottom: 25px;
+        }
+
+        .info-box h4 {
+            color: var(--primary-coffee);
+            margin-bottom: 5px;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            border: none;
+        }
+
+        /* Ֆուտեր */
+        footer {
+            background-color: var(--primary-coffee);
+            color: var(--cream);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Անիմացիաներ */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Մոբայլ ադապտացիա */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            #home h1 {
+                font-size: 2.2rem;
+            }
+
+            #home p {
+                font-size: 1.1rem;
+            }
+
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image img {
+                box-shadow: 10px 10px 0 var(--accent-warm);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Նավիգացիա -->
+    <header>
+        <a href="#" class="logo">🍩 Փքաբլիթներ և սուրճ</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Գլխավոր</a></li>
+                <li><a href="#about">Մեր մասին</a></li>
+                <li><a href="#menu">Մենյու</a></li>
+                <li><a href="#contact">Կոնտակտ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Գլխավոր բաժին -->
+    <section id="home">
+        <h1>Սկսիր օրդ քաղցրությամբ</h1>
+        <p>Մասնագիտացված սուրճ և թարմ թխված փքաբլիթներ՝ պատրաստված սիրով և լավագույն բաղադրիչներով։</p>
+        <a href="#menu" class="cta-button">Տեսնել Մենյուն</a>
+    </section>
+
+    <!-- Մեր մասին -->
+    <section id="about">
+        <div class="about-content">
+            <h2 class="section-title" style="text-align: left; margin-left: 0;">Մեր պատմությունը</h2>
+            <p>Մեր սրճարանը հիմնադրվել է 2020 թվականին՝ նպատակ ունենալով ստեղծել մի վայր, որտեղ սուրճի սիրահարները կարող են վայելել իսկական որակյալ ըմպելիքներ և ամենաթարմ փքաբլիթները քաղաքում։</p>
+            <br>
+            <p>Մենք օգտագործում ենք միայն ընտրված սուրճի հատիկներ և ավանդական բաղադրատոմսեր, որոնք փոխանցվել են սերնդեսերունդ՝ ավելացնելով ժամանակակից նրբություններ։</p>
+        </div>
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Փքաբլիթներ">
+        </div>
+    </section>
+
+    <!-- Մենյու -->
+    <section id="menu">
+        <h2 class="section-title">Ֆիրմային ըմպելիքներ</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Կապուչինո">
+                <h3>Կարամելային Կապուչինո</h3>
+                <p>Հարուստ էսպրեսսո, փափուկ կաթնային փրփուր և տնական կարամել։</p>
+                <p class="price">1,200 ֏</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Լատտե">
+                <h3>Վանիլային Երազ Լատտե</h3>
+                <p>Նուրբ լատտե՝ բնական վանիլի մզվածքով և օդային տեսքով։</p>
+                <p class="price">1,400 ֏</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Ռաֆ">
+                <h3>Պիստակով Ռաֆ</h3>
+                <p>Սերուցքային սուրճ՝ աղացած պիստակի և հատուկ օշարակի համադրությամբ։</p>
+                <p class="price">1,600 ֏</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb28b3650422?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Էսպրեսսո">
+                <h3>Էսպրեսսո Տոնիկ</h3>
+                <p>Թարմացնող սառը սուրճ՝ տոնիկի և լայմի կտորների հետ։</p>
+                <p class="price">1,100 ֏</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Կոնտակտներ -->
+    <section id="contact">
+        <h2 class="section-title">Գտեք մեզ</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-box">
+                    <h4>📍 Հասցե</h4>
+                    <p>Աբովյան փողոց 1, Երևան, Հայաստան</p>
+                </div>
+                <div class="info-box">
+                    <h4>⏰ Աշխատանքային ժամեր</h4>
+                    <p>Երկուշաբթի - Ուրբաթ: 08:00 - 22:00</p>
+                    <p>Շաբաթ - Կիրակի: 09:00 - 23:00</p>
+                </div>
+                <div class="info-box">
+                    <h4>📞 Հեռախոս</h4>
+                    <p>+374 (10) 00-00-00</p>
+                </div>
+                <div class="info-box">
+                    <h4>📧 Էլ․ հասցե</h4>
+                    <p>info@donutscoffee.am</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <!-- Քարտեզի պայմանական օրինակ -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m10!1m1!1s0x406abce29177459d:0x2287959063702a00!2m2!1d44.5152!2d40.1811!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abcf916e7894d%3A0xc3f8373b30600171!2sRepublic%20Square!5e0!3m2!1sen!2sam!4v1620000000000!5m2!1sen!2sam" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ֆուտեր -->
+    <footer>
+        <p>&copy; 2024 "Փքաբլիթներ և սուրճ"։ Բոլոր իրավունքները պաշտպանված են։</p>
+    </footer>
+
+</body>
+</html>
